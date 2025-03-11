@@ -1,6 +1,7 @@
 import { defineConfig } from "vite";
 import tailwindcss from "@tailwindcss/vite";
 export default defineConfig({
+  base: "/githubTest/",
   plugins: [tailwindcss()],
   build: {
     outDir: "docs",
@@ -9,7 +10,7 @@ export default defineConfig({
       output: {
         assetFileNames: (assetInfo) => {
           let extType = assetInfo.name?.split(".").at(1);
-          if (/png|jpe?g|svg|gif|tiff|bmp|ico/i.test(extType)) {
+          if (/^(png|jpe?g|svg|gif|tiff|bmp|ico)$/i.test(extType)) {
             extType = "images";
           }
           return `assets/${extType}/[name]-[hash][extname]`;
